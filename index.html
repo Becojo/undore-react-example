@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>To Do - Undore and React Example</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      line-height: 1.7em;
+      background-color: #fafafa;
+    }
+
+    ul {
+      padding: 0;
+      list-style: none;
+    }
+
+    .width {
+      width: 95%;
+      max-width: 500px;
+      margin: 60px auto;
+    }
+  
+    .check:checked + span {
+      text-decoration: line-through;
+    }
+
+    .text {
+      font-size: inherit;
+      padding: 0.8em 1em;
+      margin-right: 1.2em;
+      width: 75%;
+      font-size: 0.7em;
+    }
+
+    .btn {
+      background-color: white;
+      border: 1px solid #bbb;
+      padding: 0.8em 1em;
+      font-size: 0.7em;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+    }
+
+    .btn:disabled {
+      background-color: #eee;
+      border-color: #eee;
+      color: black;
+      text-decoration: line-through;
+    }
+
+    .undo {
+      margin-right: 1.2em;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="width">
+
+    <h1>To Do</h1>
+
+    <div id="main"></div>
+
+    <p>
+      Made using <a href="https://github.com/facebook/react">React</a>, <a href="https://github.com/facebook/immutable-js">Immutable.js</a> and <a href="https://github.com/becojo/undore">Undore</a>. The source code of this application is <a href="https://github.com/Becojo/undore-react-example">available on Github</a>.
+    </p>
+
+  </div>
+
+  <script src="node_modules/react/dist/react.js"></script>
+  <script src="dist/index.js"></script>
+</body>
+</html>

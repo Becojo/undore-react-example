@@ -1,0 +1,30 @@
+{
+  "name": "undore-react-example",
+  "version": "0.1.0",
+  "description": "Example of a simple React application with undo/redo support using Undore",
+  "main": "webpack.config.js",
+  "dependencies": {
+    "react": "~0.12.2",
+    "undore": "~0.1.1",
+    "jsx-loader": "~0.12.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Becojo/undore-react-example.git"
+  },
+  "keywords": [
+    "react",
+    "immutable",
+    "undore"
+  ],
+  "author": "Benoit Cote-Jodoin",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Becojo/undore-react-example/issues"
+  },
+  "homepage": "https://github.com/Becojo/undore-react-example"
+}
