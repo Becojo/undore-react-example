@@ -5,7 +5,7 @@
   "main": "webpack.config.js",
   "dependencies": {
     "react": "~0.12.2",
-    "undore": "~0.1.1",
+    "undore": "~0.2.0",
     "jsx-loader": "~0.12.2"
   },
   "devDependencies": {},

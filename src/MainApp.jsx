@@ -11,15 +11,13 @@ var MainApp = React.createClass({
   mixins: [PureRenderMixin],
 
   getInitialState: function() {
-    var data = undore({ 
-      'todos': Immutable.List([
+    var data = undore(Immutable.List([
         makeTodo('Buy bananas', true),
         makeTodo('Learn latin', false),
         makeTodo('Lorem ipsum dolor sit amet', false),
         makeTodo('Go on the moon', false),
         makeTodo('Make a todo list', true)
-      ])
-    });
+      ]));
 
     return { data: data, text: '' };
   },
@@ -47,20 +45,19 @@ var MainApp = React.createClass({
   },
 
   handleOnChange: function(i, e) {
-    var todos = undore.get(this.state.data, 'todos')
-                      .setIn([i, 'checked'], e.target.checked);
-
-    this.setState({ 
-      data: undore.set(this.state.data, 'todos', todos)
+    var data = undore.update(this.state.data, function(list) {
+      return list.setIn([i, 'checked'], e.target.checked);
     });
+
+    this.setState({ data: data });
   },
 
   handleAddClick: function() {
-    var todos = undore.get(this.state.data, 'todos');
+    var todos = undore.get(this.state.data);
     var todo = makeTodo(this.state.text, false);
 
-    this.setState({ 
-      data: undore.set(this.state.data, 'todos', todos.push(todo)),
+    this.setState({
+      data: undore.set(this.state.data, todos.push(todo)),
       text: ''
     });
   },
@@ -70,13 +67,13 @@ var MainApp = React.createClass({
   },
 
   render: function() {
-    var todos = undore.get(this.state.data, 'todos').map(function(todo, i) {
+    var todos = undore.get(this.state.data).map(function(todo, i) {
       return (
         <li key={i}>
           <label>
-            <input className="check" type="checkbox" 
-                   checked={todo.get('checked')} 
-                   onChange={this.handleOnChange.bind(this, i)}/> 
+            <input className="check" type="checkbox"
+                   checked={todo.get('checked')}
+                   onChange={this.handleOnChange.bind(this, i)}/>
 
             {todo.get('text')}
           </label>
@@ -87,18 +84,18 @@ var MainApp = React.createClass({
     return (
       <div>
         <p>
-          <input className="btn undo" type="button" value="Undo" onClick={this.undo} 
+          <input className="btn undo" type="button" value="Undo" onClick={this.undo}
                  disabled={this.state.data.get('history').isEmpty()} />
 
-          <input className="btn redo" type="button" value="Redo" 
+          <input className="btn redo" type="button" value="Redo"
                  disabled={this.state.data.get('redos').isEmpty()}
                  onClick={this.redo} />
         </p>
         <p>
-          <input className="text" type="text" placeholder="Do something" value={this.state.text} 
-                 onChange={this.handleTextChange} /> 
+          <input className="text" type="text" placeholder="Do something" value={this.state.text}
+                 onChange={this.handleTextChange} />
 
-          <input className="btn add" type="button" value="Add" 
+          <input className="btn add" type="button" value="Add"
                  disabled={this.state.text == ''}
                  onClick={this.handleAddClick} />
         </p>
